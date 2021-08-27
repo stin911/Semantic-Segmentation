@@ -1,0 +1,17 @@
+{
+  "loss": "BCEWithLogitsLoss",
+  "optimizer": "SGD",
+  "train_image_path": "D:/Car-dataset/train/",
+  "train_mask_path": "D:/Car-dataset/Mask_train/",
+  "validation_image_path":"D:/Car-dataset/val_image/",
+  "validation_mask_path":"D:/Car-dataset/val_mask/",
+  "learning_rate": 0.0001,
+  "batch_n": 4,
+  "number_epochs": 50,
+  "architecture": "basicunet",
+  "dimensions": 2,
+  "in_channels": 3,
+  "out_channels": 1,
+  "n_worker": 2,
+  "experiment_name": "basic_unet50"
+}
