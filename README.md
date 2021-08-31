@@ -1,5 +1,5 @@
 # SemanticSegmentation
-Example of building a model for semantic segmentation. 
+Example of building a model for semantic segmentation. Currently, it used the Carvana dataset from kaggle
 Folder structure:
 - AbstractClass:contains abstract/istance class defined
 - DataLoader: contains dataloader defined for the dataset used
