@@ -3,11 +3,32 @@ import monai
 import monai.networks.nets as nets
 
 
+class Combined:
+    def __init__(self, weight=None):
+        self.weight = weight
+
+    def __call__(self, output, target):
+        self.forward(output, target)
+
+    def forward(self, output, target):
+
+        return CombinedBCEDICE(output, target,self.weight)
+
+
+def CombinedBCEDICE(output, target,w):
+    a = torch.nn.BCEWithLogitsLoss()(output, target)
+    b = monai.losses.DiceLoss()(output, target)
+    loss = a + b
+    return loss
+
+
 def select_loss(name: str):
     if name == "BCEWithLogitsLoss":
         loss = torch.nn.BCEWithLogitsLoss()
     elif name == "DICE":
         loss = monai.losses.DiceLoss()
+    elif name == "combine":
+        loss = Combined()
     else:
         raise Exception("The requested loss is not available")
     return loss

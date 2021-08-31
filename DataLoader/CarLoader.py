@@ -40,10 +40,12 @@ class DataCarData(Dataset):
         :return: an element of dataset
         """
         image_path = os.path.join(self.image_dir, self.image_list[idx])
-        mask_path = os.path.join(self.mask_dir, self.image_list[idx][:-4] + "_mask.gif")
         image = Image.open(image_path).convert("RGB")
-
-        mask = Image.open(mask_path)
+        if self.mask_dir is not None:
+            mask_path = os.path.join(self.mask_dir, self.image_list[idx][:-4] + "_mask.gif")
+            mask = Image.open(mask_path)
+        else:
+            mask = None
         sample = {'image': image, 'mask': mask}
         if self.transform:
             sample = self.transform(sample)
@@ -57,10 +59,7 @@ def main():
     data = DataLoader(t, batch_size=1, num_workers=1)
 
     for i, sample in enumerate(data):
-
         print(sample['mask'].max())
-
-        #print(np.shape(sample['image']))
 
 
 if __name__ == '__main__':

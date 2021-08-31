@@ -1,0 +1,16 @@
+
+{
+  "train": false,
+  "train_image_path": "D:/Car-dataset/train/",
+  "train_mask_path": null,
+  "learning_rate": 0.0001,
+  "architecture": "basicunet",
+  "dimensions": 2,
+  "optimizer": "SGD",
+  "in_channels": 3,
+  "out_channels": 1,
+  "n_worker": 4,
+  "experiment_name": "basic_unet50",
+  "tensorboard": false,
+  "load": "basic_unet50/19_38_30_50.pth"
+}
